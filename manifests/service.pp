@@ -3,6 +3,6 @@ class postfix::service {
     ensure    => running,
     enable    => true,
     hasstatus => true,
-    restart   => '/etc/init.d/postfix reload',
+    restart   => '/bin/kill `/bin/cat /var/lib/postfix/master.lock`; /etc/init.d/postfix restart',
   }
 }
